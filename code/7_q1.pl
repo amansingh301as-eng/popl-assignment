@@ -21,6 +21,15 @@ generate_assignment([ p('Alex',  D1, L1, P1),
 satisfies_all(Active, Solution) :-
     forall(member(N, Active), clue(N, Solution)).
 
+% main
+% P1.a: finds the first assignment that satisfies clues 1 to 8 and prints
+% it as one line per friend, in the order Alex, Ben, Carla, Dana.
+main :-
+    once(( generate_assignment(Solution),
+           satisfies_all([1, 2, 3, 4, 5, 6, 7, 8], Solution) )),
+    forall(member(p(Name, Dept, Lang, Project), Solution),
+           format("~w = [~w, ~w, ~w]~n", [Name, Dept, Lang, Project])).
+
 % clue(+N, +Solution)
 % Succeeds when clue number N holds in the fully filled-in Solution.
 
