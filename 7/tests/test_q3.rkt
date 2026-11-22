@@ -1,10 +1,5 @@
-#lang racket/base
-
 ; Tests for S1 (Binary Tree Traversals)
-; Run with: racket tests/test_q3.rkt
-
-(require racket/include)
-(include "../code/7_q3.rkt")
+; Run: cat code/7_q3.rkt tests/test_q3.rkt > /tmp/q3.rkt && racket /tmp/q3.rkt
 
 ;; ---------- Test Trees ----------
 
