@@ -63,3 +63,21 @@ render(node(Op, L, R), ParentPrec, Side, Text) :-
         string_concat(Temp, ')', Text)
     ;   Text = Core
     ).
+
+% ---------- Equation Formation ----------
+
+% valid_equation(+List, -Equation)
+% Equation is a canonical string "L=R" formed by splitting List into non-empty
+% Left and Right sublists, where expressions over Left and Right evaluate
+% to the same integer value.
+valid_equation(List, Equation) :-
+    append(Left, Right, List),
+    Left \= [],
+    Right \= [],
+    expr(Left, LT, LV),
+    expr(Right, RT, RV),
+    LV =:= RV,
+    render(LT, 0, top, LS),
+    render(RT, 0, top, RS),
+    string_concat(LS, '=', Prefix),
+    string_concat(Prefix, RS, Equation).
