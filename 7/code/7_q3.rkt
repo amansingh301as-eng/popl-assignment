@@ -55,3 +55,11 @@
         ((and (null? (cadr tree)) (null? (caddr tree))) 1)
         (else (+ (tree-leaves (cadr tree))
                  (tree-leaves (caddr tree))))))
+
+; ---------- Task S1.a: Print Inorder ----------
+
+; print-inorder : tree -> void
+; Prints the list of tree node values in inorder on one line, ending with a newline.
+(define (print-inorder tree)
+  (display (inorder-acc tree '()))
+  (newline))
