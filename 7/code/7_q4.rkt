@@ -50,3 +50,11 @@
                      (cons x result)
                      result)))))
     (lambda (lst) (process lst))))
+
+; ---------- Task S2.b: Conditional Insert ----------
+
+; insert-if-short : atom list integer -> list
+; Inserts atom x at the front of every list whose original length is less than n,
+; at all nesting levels, defined via make-inserter.
+(define (insert-if-short x lst n)
+  ((make-inserter x (lambda (len) (< len n))) lst))
