@@ -81,3 +81,12 @@ valid_equation(List, Equation) :-
     render(RT, 0, top, RS),
     string_concat(LS, '=', Prefix),
     string_concat(Prefix, RS, Equation).
+
+% ---------- Task P2.a: Single Equation Generation ----------
+
+% generate_equation(+List, -Equation)
+% Unifies Equation with a valid equation for List.
+% Fails cleanly (no loop, no error) if no valid equation exists,
+% including for lists of length 0 or 1.
+generate_equation(List, Equation) :-
+    valid_equation(List, Equation).
