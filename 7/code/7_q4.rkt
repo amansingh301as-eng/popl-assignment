@@ -14,3 +14,19 @@
     (if (null? rest)
         count
         (loop (cdr rest) (+ count 1)))))
+
+; my-reverse : list -> list
+; Reverses a list using a tail-recursive accumulator.
+(define (my-reverse lst)
+  (let loop ((rest lst) (acc '()))
+    (if (null? rest)
+        acc
+        (loop (cdr rest) (cons (car rest) acc)))))
+
+; my-map : (any -> any) list -> list
+; Maps fn over each element of lst, preserving order using tail recursion.
+(define (my-map fn lst)
+  (let loop ((rest lst) (acc '()))
+    (if (null? rest)
+        (my-reverse acc)
+        (loop (cdr rest) (cons (fn (car rest)) acc)))))
