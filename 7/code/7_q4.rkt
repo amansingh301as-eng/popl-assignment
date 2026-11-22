@@ -30,3 +30,23 @@
     (if (null? rest)
         (my-reverse acc)
         (loop (cdr rest) (cons (fn (car rest)) acc)))))
+
+; ---------- Task S2.c: Higher-Order Inserter ----------
+
+; make-inserter : atom (integer -> boolean) -> (list -> list)
+; Returns a function of one argument (a list) that inserts atom x at the
+; front of every list (at all nesting levels) whose length satisfies len-ok?.
+; The length is measured on the original list before any insertion.
+(define (make-inserter x len-ok?)
+  (letrec ((process
+             (lambda (lst)
+               (let ((result
+                      (my-map (lambda (item)
+                                (if (or (pair? item) (null? item))
+                                    (process item)
+                                    item))
+                              lst)))
+                 (if (len-ok? (my-length lst))
+                     (cons x result)
+                     result)))))
+    (lambda (lst) (process lst))))
