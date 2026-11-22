@@ -90,3 +90,18 @@ valid_equation(List, Equation) :-
 % including for lists of length 0 or 1.
 generate_equation(List, Equation) :-
     valid_equation(List, Equation).
+
+% ---------- Task P2.b: All Equations & Counting ----------
+
+% all_equations(+List, -Equations)
+% Equations is the list of all valid equations for List without duplicates,
+% sorted in standard order of terms by sort/2. Unifies with [] if none exist.
+all_equations(List, Equations) :-
+    findall(E, valid_equation(List, E), Unsorted),
+    sort(Unsorted, Equations).
+
+% count_equations(+List, -N)
+% N is the count of valid unique equations for List.
+count_equations(List, N) :-
+    all_equations(List, Equations),
+    length(Equations, N).
