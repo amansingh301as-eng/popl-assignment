@@ -1,10 +1,5 @@
-#lang racket/base
-
 ; Tests for S2 (Conditionally Insert into a Nested List)
-; Run with: racket tests/test_q4.rkt
-
-(require racket/include)
-(include "../code/7_q4.rkt")
+; Run: cat code/7_q4.rkt tests/test_q4.rkt > /tmp/q4.rkt && racket /tmp/q4.rkt
 
 ;; ---------- Assignment Examples ----------
 
