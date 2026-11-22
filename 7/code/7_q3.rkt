@@ -26,3 +26,13 @@
       (cons (car tree)
             (preorder-acc (cadr tree)
                           (preorder-acc (caddr tree) acc)))))
+
+; postorder-acc : tree list -> list
+; Returns the list of tree node values in postorder (left, right, node)
+; prepended onto acc, without using append.
+(define (postorder-acc tree acc)
+  (if (null? tree)
+      acc
+      (postorder-acc (cadr tree)
+                     (postorder-acc (caddr tree)
+                                    (cons (car tree) acc)))))
