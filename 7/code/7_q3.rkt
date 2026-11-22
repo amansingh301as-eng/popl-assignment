@@ -36,3 +36,13 @@
       (postorder-acc (cadr tree)
                      (postorder-acc (caddr tree)
                                     (cons (car tree) acc)))))
+
+; ---------- Tree Metrics Helpers ----------
+
+; tree-height : tree -> integer
+; The height of () is 0. A node's height is 1 + max(height(left), height(right)).
+(define (tree-height tree)
+  (if (null? tree)
+      0
+      (+ 1 (max (tree-height (cadr tree))
+                (tree-height (caddr tree))))))
