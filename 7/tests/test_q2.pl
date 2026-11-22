@@ -87,47 +87,47 @@ test(zero_operands) :-
 :- begin_tests(p2_precedence_and_formatting).
 
 test(render_num) :-
-    7_q2:render(num(42), 0, top, S),
+    render(num(42), 0, top, S),
     S == "42".
 
 test(render_add_mult_left_paren) :-
     % (4+2)*3
-    7_q2:render(node('*', node('+', num(4), num(2)), num(3)), 0, top, S),
+    render(node('*', node('+', num(4), num(2)), num(3)), 0, top, S),
     S == "(4+2)*3".
 
 test(render_add_mult_no_paren) :-
     % 4+2*3
-    7_q2:render(node('+', num(4), node('*', num(2), num(3))), 0, top, S),
+    render(node('+', num(4), node('*', num(2), num(3))), 0, top, S),
     S == "4+2*3".
 
 test(render_div_mult_left_assoc) :-
     % 8/4*2 -> (8/4)*2
-    7_q2:render(node('*', node('/', num(8), num(4)), num(2)), 0, top, S),
+    render(node('*', node('/', num(8), num(4)), num(2)), 0, top, S),
     S == "8/4*2".
 
 test(render_div_mult_right_paren) :-
     % 8/(4*2)
-    7_q2:render(node('/', num(8), node('*', num(4), num(2))), 0, top, S),
+    render(node('/', num(8), node('*', num(4), num(2))), 0, top, S),
     S == "8/(4*2)".
 
 test(render_sub_left_assoc) :-
     % 1-2-3 -> (1-2)-3
-    7_q2:render(node('-', node('-', num(1), num(2)), num(3)), 0, top, S),
+    render(node('-', node('-', num(1), num(2)), num(3)), 0, top, S),
     S == "1-2-3".
 
 test(render_sub_right_paren) :-
     % 1-(2-3)
-    7_q2:render(node('-', num(1), node('-', num(2), num(3))), 0, top, S),
+    render(node('-', num(1), node('-', num(2), num(3))), 0, top, S),
     S == "1-(2-3)".
 
 test(render_add_right_paren) :-
     % 1+(2+3)
-    7_q2:render(node('+', num(1), node('+', num(2), num(3))), 0, top, S),
+    render(node('+', num(1), node('+', num(2), num(3))), 0, top, S),
     S == "1+(2+3)".
 
 test(render_add_left_assoc) :-
     % 1+2+3 -> (1+2)+3
-    7_q2:render(node('+', node('+', num(1), num(2)), num(3)), 0, top, S),
+    render(node('+', node('+', num(1), num(2)), num(3)), 0, top, S),
     S == "1+2+3".
 
 :- end_tests(p2_precedence_and_formatting).
