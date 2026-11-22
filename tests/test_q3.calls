@@ -1,0 +1,8 @@
+(define t1 '(4 (2 (1 () ()) (3 () ())) (6 (5 () ()) (7 () ()))))
+(print-inorder t1)
+(print-all-traversals t1)
+(print-height-and-leaves t1)
+(print-all-traversals '())
+(print-height-and-leaves '())
+(print-all-traversals '(a (b () ()) (c () ())))
+(print-height-and-leaves '(a (b () ()) (c () ())))

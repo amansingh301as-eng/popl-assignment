@@ -1,0 +1,6 @@
+# Prompt Log for 2023B3A70476H
+
+This file records the prompts used during the assignment setup for member 2023B3A70476H.
+
+User request: Provide assignment details and Git setup.
+
