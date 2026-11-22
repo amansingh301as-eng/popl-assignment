@@ -14,3 +14,13 @@ generate_assignment([ p('Alex',  D1, L1, P1),
     permutation([research, development, design, testing], [D1, D2, D3, D4]),
     permutation([python, java, 'c++', javascript], [L1, L2, L3, L4]),
     permutation(['AI', web, embedded, data], [P1, P2, P3, P4]).
+
+% clue(+N, +Solution)
+% Succeeds when clue number N holds in the fully filled-in Solution.
+
+% Clue 1: The friend who prefers the AI project does not work in research
+% and is not Dana.
+clue(1, Solution) :-
+    member(p(Name, Dept, _, 'AI'), Solution),
+    Dept \== research,
+    Name \== 'Dana'.
