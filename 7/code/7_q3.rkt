@@ -46,3 +46,12 @@
       0
       (+ 1 (max (tree-height (cadr tree))
                 (tree-height (caddr tree))))))
+
+; tree-leaves : tree -> integer
+; Returns the number of leaf nodes in tree. An empty tree has 0 leaves.
+; A leaf has both left and right subtrees empty.
+(define (tree-leaves tree)
+  (cond ((null? tree) 0)
+        ((and (null? (cadr tree)) (null? (caddr tree))) 1)
+        (else (+ (tree-leaves (cadr tree))
+                 (tree-leaves (caddr tree))))))
