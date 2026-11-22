@@ -58,3 +58,15 @@
 ; at all nesting levels, defined via make-inserter.
 (define (insert-if-short x lst n)
   ((make-inserter x (lambda (len) (< len n))) lst))
+
+; ---------- Task S2.a: Read and Print Result ----------
+
+; print-insert-result : -> void
+; Reads x, lst, n from standard input and prints the result of insert-if-short.
+; Prints no prompt or extra text, ending with a newline.
+(define (print-insert-result)
+  (let* ((x (read))
+         (lst (read))
+         (n (read)))
+    (display (insert-if-short x lst n))
+    (newline)))
