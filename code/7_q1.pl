@@ -15,6 +15,12 @@ generate_assignment([ p('Alex',  D1, L1, P1),
     permutation([python, java, 'c++', javascript], [L1, L2, L3, L4]),
     permutation(['AI', web, embedded, data], [P1, P2, P3, P4]).
 
+% satisfies_all(+Active, +Solution)
+% Succeeds, at most once, when clue(N, Solution) holds for every clue number
+% N in Active. An empty Active list is satisfied by any Solution.
+satisfies_all(Active, Solution) :-
+    forall(member(N, Active), clue(N, Solution)).
+
 % clue(+N, +Solution)
 % Succeeds when clue number N holds in the fully filled-in Solution.
 
