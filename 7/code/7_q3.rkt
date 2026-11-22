@@ -75,3 +75,11 @@
   (newline)
   (display (postorder-acc tree '()))
   (newline))
+
+; ---------- Task S1.c: Print Height and Leaves ----------
+
+; print-height-and-leaves : tree -> void
+; Prints the list (height leaf-count) on one line, ending with a newline.
+(define (print-height-and-leaves tree)
+  (display (list (tree-height tree) (tree-leaves tree)))
+  (newline))
