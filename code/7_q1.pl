@@ -30,6 +30,16 @@ main :-
     forall(member(p(Name, Dept, Lang, Project), Solution),
            format("~w = [~w, ~w, ~w]~n", [Name, Dept, Lang, Project])).
 
+% count_solutions(+Active, -N)
+% P1.b: N is the number of assignments that satisfy every clue in Active.
+% Clues not listed in Active are ignored.
+count_solutions(Active, N) :-
+    findall(Solution,
+            ( generate_assignment(Solution),
+              satisfies_all(Active, Solution) ),
+            Solutions),
+    length(Solutions, N).
+
 % clue(+N, +Solution)
 % Succeeds when clue number N holds in the fully filled-in Solution.
 
