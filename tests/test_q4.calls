@@ -1,5 +1,0 @@
-(display (insert-if-short 42 '((1 2) (3 4 5) (6) ()) 3)) (newline)
-(display (insert-if-short 0 '(((1) 2) (3) ((4 5 6) ())) 3)) (newline)
-(display (insert-if-short 7 '() 3)) (newline)
-(display (insert-if-short 7 '() 0)) (newline)
-(display ((make-inserter 9 (lambda (n) (= n 1))) '((a) (b c) ()))) (newline)

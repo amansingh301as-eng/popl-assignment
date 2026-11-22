@@ -1,6 +1,0 @@
-# Prompt Log for 2023B5A70795H
-
-This file records the prompts used during the assignment setup.
-
-User request: Provide assignment details and Git setup.
-
