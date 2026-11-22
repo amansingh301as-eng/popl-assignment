@@ -63,3 +63,15 @@
 (define (print-inorder tree)
   (display (inorder-acc tree '()))
   (newline))
+
+; ---------- Task S1.b: Print All Traversals ----------
+
+; print-all-traversals : tree -> void
+; Prints the inorder, preorder, and postorder traversal lists on three separate lines.
+(define (print-all-traversals tree)
+  (display (inorder-acc tree '()))
+  (newline)
+  (display (preorder-acc tree '()))
+  (newline)
+  (display (postorder-acc tree '()))
+  (newline))
