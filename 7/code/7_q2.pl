@@ -32,3 +32,34 @@ expr(Ns, node(Op, L, R), Value) :-
     expr(Left, L, A),
     expr(Right, R, B),
     compute(Op, A, B, Value).
+
+% ---------- Canonical String Formatting ----------
+
+% precedence(+Op, -Prec)
+% Precedence levels: * and / have precedence 2; + and - have precedence 1.
+precedence('+', 1).
+precedence('-', 1).
+precedence('*', 2).
+precedence('/', 2).
+
+% render(+Tree, +ParentPrec, +Side, -Text)
+% Formats Tree into canonical string Text without spaces.
+% Side is one of top, left, or right.
+% Parentheses rules:
+% - Single numbers are never in parentheses.
+% - A left operand is parenthesized only if its operator has lower precedence than parent.
+% - A right operand is parenthesized if its operator has equal or lower precedence than parent.
+render(num(N), _, _, Text) :-
+    number_string(N, Text).
+render(node(Op, L, R), ParentPrec, Side, Text) :-
+    precedence(Op, Prec),
+    render(L, Prec, left, LS),
+    render(R, Prec, right, RS),
+    atom_string(Op, OS),
+    string_concat(LS, OS, LeftOp),
+    string_concat(LeftOp, RS, Core),
+    (   (Prec < ParentPrec ; (Side == right, Prec =:= ParentPrec))
+    ->  string_concat('(', Core, Temp),
+        string_concat(Temp, ')', Text)
+    ;   Text = Core
+    ).
