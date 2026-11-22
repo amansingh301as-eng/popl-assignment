@@ -33,6 +33,16 @@ single_clue_count(7, 5184).
 single_clue_count(8, 2592).
 single_clue_count(9, 3456).
 
+% omitted_clue_count(?Clue, ?Count): solutions of clues 1 to 8 without that clue.
+omitted_clue_count(1, 4).
+omitted_clue_count(2, 6).
+omitted_clue_count(3, 13).
+omitted_clue_count(4, 12).
+omitted_clue_count(5, 9).
+omitted_clue_count(6, 7).
+omitted_clue_count(7, 5).
+omitted_clue_count(8, 16).
+
 % rejected(?Clue, ?Rows): a complete assignment that violates that clue.
 rejected(1, [research-java-'AI', development-javascript-web,
              design-'c++'-data, testing-python-embedded]).   % AI in research
@@ -137,6 +147,10 @@ test(repeated_clues_are_harmless, N == 3) :-
 
 test(each_clue_alone, [forall(single_clue_count(Clue, Expected)), N == Expected]) :-
     count_solutions([Clue], N).
+
+test(each_clue_removed, [forall(omitted_clue_count(Clue, Expected)), N == Expected]) :-
+    once(select(Clue, [1, 2, 3, 4, 5, 6, 7, 8], Active)),
+    count_solutions(Active, N).
 
 test(finds_exactly_the_known_solutions, Found == Expected) :-
     findall(S, ( generate_assignment(S),
