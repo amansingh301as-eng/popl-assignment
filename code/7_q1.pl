@@ -39,3 +39,8 @@ clue(3, Solution) :-
 clue(4, Solution) :-
     member(p('Ben', Dept, _, web), Solution),
     Dept \== testing.
+
+% Clue 5: The friend whose favorite language is Java works in the design
+% department.
+clue(5, Solution) :-
+    member(p(_, design, java, _), Solution).
